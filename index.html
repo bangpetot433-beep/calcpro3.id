@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calcpro.id — Kalkulator Online & Konverter Satuan Indonesia</title>
+  <meta name="description" content="Calcpro.id adalah kalkulator online dan aplikasi konverter satuan Indonesia untuk kalkulator digital, konversi mata uang, panjang, suhu, berat, tekanan, BMI, dan perhitungan keuangan."/>
+  <meta name="keywords" content="calcpro.id, kalkulator online, konverter satuan, konversi mata uang, kalkulator BMI, kalkulator diskon, konversi suhu, konversi panjang, kalkulator investasi, kesehatan, keuangan"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="Calcpro.id — Kalkulator Online & Konverter Satuan Indonesia"/>
+  <meta property="og:description" content="Calcpro.id adalah kalkulator online dan aplikasi konverter satuan Indonesia untuk kalkulator digital, konversi mata uang, panjang, suhu, berat, tekanan, BMI, dan perhitungan keuangan."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="id_ID"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<div id="toast-container"></div>
+<div class="overlay" id="overlay"></div>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">Calcpro.id</span>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+
+    <div class="nav-group">
+      <span class="nav-label">Umum</span>
+      <a class="nav-item active" data-page="dashboard" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a class="nav-item" data-page="kalkulator" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+        <span>Kalkulator</span>
+      </a>
+      <a class="nav-item" data-page="riwayat" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Riwayat</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">Konversi</span>
+      <a class="nav-item" data-page="panjang" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6l6 6-6 6M21 6l-6 6 6 6"/></svg>
+        <span>Panjang</span>
+      </a>
+      <a class="nav-item" data-page="suhu" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+        <span>Suhu</span>
+      </a>
+      <a class="nav-item" data-page="berat" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><path d="M6.5 8a7 7 0 1 0 11 0"/></svg>
+        <span>Berat</span>
+      </a>
+      <a class="nav-item" data-page="tekanan" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Tekanan</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">Keuangan</span>
+      <a class="nav-item" data-page="matauang" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>Mata Uang Realtime</span>
+      </a>
+      <a class="nav-item" data-page="diskon" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <span>Diskon</span>
+      </a>
+      <a class="nav-item" data-page="bunga" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Bunga & Investasi</span>
+      </a>
+      <a class="nav-item" data-page="nabung" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 6v4l3 3"/></svg>
+        <span>Target Nabung</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">Kesehatan</span>
+      <a class="nav-item" data-page="bmi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>BMI</span>
+      </a>
+      <a class="nav-item" data-page="kalori" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <span>Kebutuhan Kalori</span>
+      </a>
+    </div>
+
+  </nav>
+  <div class="sidebar-footer">v2.0.0 · CalcPro</div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main" id="mainContent">
+  <header class="topbar">
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span><span></span><span></span>
+    </button>
+    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+    <div class="topbar-right">
+      <span class="badge" id="statusBadge">Online</span>
+    </div>
+  </header>
+
+  <!-- ═══ DASHBOARD ═══ -->
+  <section class="page active" id="page-dashboard">
+    <div class="dashboard-hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Selamat Datang di Calcpro.id</p>
+        <h2 class="hero-heading">Hitung Lebih Cepat,<br><em>Konversi Lebih Pintar</em></h2>
+        <p class="hero-sub">Calcpro.id menyediakan kalkulator, konversi, keuangan & kesehatan dalam satu platform.</p>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="orbit-ring ring-3"></div>
+        <span class="orbit-center">∑</span>
+      </div>
+    </div>
+    <div class="dash-categories">
+      <div class="dash-cat" data-page="kalkulator"><span class="dc-icon">🧮</span><span>Kalkulator</span></div>
+      <div class="dash-cat" data-page="panjang"><span class="dc-icon">📏</span><span>Panjang</span></div>
+      <div class="dash-cat" data-page="suhu"><span class="dc-icon">🌡</span><span>Suhu</span></div>
+      <div class="dash-cat" data-page="berat"><span class="dc-icon">⚖</span><span>Berat</span></div>
+      <div class="dash-cat" data-page="tekanan"><span class="dc-icon">💨</span><span>Tekanan</span></div>
+      <div class="dash-cat" data-page="matauang"><span class="dc-icon">💱</span><span>Mata Uang</span></div>
+      <div class="dash-cat" data-page="diskon"><span class="dc-icon">🏷</span><span>Diskon</span></div>
+      <div class="dash-cat" data-page="bunga"><span class="dc-icon">📈</span><span>Bunga</span></div>
+      <div class="dash-cat" data-page="nabung"><span class="dc-icon">🎯</span><span>Nabung</span></div>
+      <div class="dash-cat" data-page="bmi"><span class="dc-icon">🏃</span><span>BMI</span></div>
+      <div class="dash-cat" data-page="kalori"><span class="dc-icon">🔥</span><span>Kalori</span></div>
+      <div class="dash-cat" data-page="riwayat"><span class="dc-icon">📋</span><span>Riwayat</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ KALKULATOR ═══ -->
+  <section class="page" id="page-kalkulator">
+    <div class="content-header"><h2>Kalkulator</h2><p>Operasi aritmatika dasar</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Angka Pertama</label><input id="calc-a" type="number" placeholder="0"/></div>
+        <div class="field"><label>Angka Kedua</label><input id="calc-b" type="number" placeholder="0"/></div>
+      </div>
+      <div class="op-grid">
+        <button class="op-btn" data-op="tambah"><span class="op-sym">＋</span><span>Tambah</span></button>
+        <button class="op-btn" data-op="kurang"><span class="op-sym">－</span><span>Kurang</span></button>
+        <button class="op-btn" data-op="kali"><span class="op-sym">×</span><span>Kali</span></button>
+        <button class="op-btn" data-op="bagi"><span class="op-sym">÷</span><span>Bagi</span></button>
+      </div>
+      <div class="result-box hidden" id="calc-result">
+        <span class="result-label">Hasil</span>
+        <span class="result-value" id="calc-value">—</span>
+        <span class="result-expr" id="calc-expr"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PANJANG ═══ -->
+  <section class="page" id="page-panjang">
+    <div class="content-header"><h2>Konversi Panjang</h2><p>Satuan panjang & jarak</p></div>
+    <div class="card glass">
+      <div class="field mb"><label>Nilai</label><input id="panjang-nilai" type="number" placeholder="Masukkan angka"/></div>
+      <div class="input-row">
+        <div class="field"><label>Dari</label>
+          <select id="panjang-dari">
+            <option value="km">Kilometer (km)</option><option value="hm">Hektometer (hm)</option>
+            <option value="dam">Dekameter (dam)</option><option value="m" selected>Meter (m)</option>
+            <option value="dm">Desimeter (dm)</option><option value="cm">Sentimeter (cm)</option>
+            <option value="mm">Milimeter (mm)</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="swap-panjang">⇄</button>
+        <div class="field"><label>Ke</label>
+          <select id="panjang-ke">
+            <option value="km">Kilometer (km)</option><option value="hm">Hektometer (hm)</option>
+            <option value="dam">Dekameter (dam)</option><option value="m">Meter (m)</option>
+            <option value="dm">Desimeter (dm)</option><option value="cm" selected>Sentimeter (cm)</option>
+            <option value="mm">Milimeter (mm)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-panjang"><span class="btn-text">Konversi</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="panjang-result">
+        <span class="result-label">Hasil</span>
+        <span class="result-value" id="panjang-value">—</span>
+        <span class="result-expr" id="panjang-expr"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SUHU ═══ -->
+  <section class="page" id="page-suhu">
+    <div class="content-header"><h2>Konversi Suhu</h2><p>Konversi ke semua satuan sekaligus</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Suhu</label><input id="suhu-nilai" type="number" placeholder="Masukkan suhu"/></div>
+        <div class="field"><label>Satuan Asal</label>
+          <select id="suhu-dari">
+            <option value="celcius">Celcius (°C)</option><option value="reamur">Reamur (°R)</option>
+            <option value="fahrenheit">Fahrenheit (°F)</option><option value="kelvin">Kelvin (K)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-suhu"><span class="btn-text">Konversi Semua</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="suhu-result">
+        <span class="result-label">Hasil Konversi</span>
+        <div class="chip-grid" id="suhu-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BERAT ═══ -->
+  <section class="page" id="page-berat">
+    <div class="content-header"><h2>Konversi Berat</h2><p>Massa & berat</p></div>
+    <div class="card glass">
+      <div class="field mb"><label>Nilai</label><input id="berat-nilai" type="number" placeholder="Masukkan berat"/></div>
+      <div class="input-row">
+        <div class="field"><label>Dari</label>
+          <select id="berat-asal">
+            <option value="kg" selected>Kilogram (kg)</option><option value="g">Gram (g)</option>
+            <option value="ons">Ons</option><option value="lb">Pound (lb)</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="swap-berat">⇄</button>
+        <div class="field"><label>Ke</label>
+          <select id="berat-tujuan">
+            <option value="kg">Kilogram (kg)</option><option value="g" selected>Gram (g)</option>
+            <option value="ons">Ons</option><option value="lb">Pound (lb)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-berat"><span class="btn-text">Konversi</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="berat-result">
+        <span class="result-label">Hasil</span>
+        <span class="result-value" id="berat-value">—</span>
+        <span class="result-expr" id="berat-expr"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEKANAN ═══ -->
+  <section class="page" id="page-tekanan">
+    <div class="content-header"><h2>Konversi Tekanan</h2><p>Sumber: NIST / Satuan SI</p></div>
+    <div class="card glass">
+      <div class="field mb"><label>Nilai</label><input id="tekanan-nilai" type="number" placeholder="Masukkan tekanan"/></div>
+      <div class="input-row">
+        <div class="field"><label>Dari</label>
+          <select id="tekanan-dari">
+            <option value="pa">Pascal (Pa)</option><option value="kpa">Kilopascal (kPa)</option>
+            <option value="mpa">Megapascal (MPa)</option><option value="bar" selected>Bar</option>
+            <option value="atm">Atmosfer (atm)</option><option value="psi">PSI</option>
+            <option value="mmhg">mmHg</option><option value="torr">Torr</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="swap-tekanan">⇄</button>
+        <div class="field"><label>Ke</label>
+          <select id="tekanan-ke">
+            <option value="pa">Pascal (Pa)</option><option value="kpa">Kilopascal (kPa)</option>
+            <option value="mpa">Megapascal (MPa)</option><option value="bar">Bar</option>
+            <option value="atm" selected>Atmosfer (atm)</option><option value="psi">PSI</option>
+            <option value="mmhg">mmHg</option><option value="torr">Torr</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-tekanan"><span class="btn-text">Konversi</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="tekanan-result">
+        <span class="result-label">Hasil</span>
+        <span class="result-value" id="tekanan-value">—</span>
+        <span class="result-expr" id="tekanan-expr"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MATA UANG ═══ -->
+  <section class="page" id="page-matauang">
+    <div class="content-header"><h2>Konversi Mata Uang</h2><p>Kurs realtime · Sumber: Frankfurter API (European Central Bank)</p></div>
+    <div class="card glass">
+      <div class="field mb"><label>Jumlah</label><input id="mu-jumlah" type="number" placeholder="Masukkan jumlah" value="1"/></div>
+      <div class="input-row">
+        <div class="field"><label>Dari</label>
+          <select id="mu-dari">
+            <option value="USD">USD — Dolar Amerika</option><option value="IDR" selected>IDR — Rupiah</option>
+            <option value="EUR">EUR — Euro</option><option value="GBP">GBP — Pound Sterling</option>
+            <option value="JPY">JPY — Yen Jepang</option><option value="SGD">SGD — Dolar Singapura</option>
+            <option value="MYR">MYR — Ringgit Malaysia</option><option value="AUD">AUD — Dolar Australia</option>
+            <option value="CNY">CNY — Yuan China</option><option value="SAR">SAR — Riyal Saudi</option>
+            <option value="KRW">KRW — Won Korea</option><option value="THB">THB — Baht Thailand</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="swap-mu">⇄</button>
+        <div class="field"><label>Ke</label>
+          <select id="mu-ke">
+            <option value="USD" selected>USD — Dolar Amerika</option><option value="IDR">IDR — Rupiah</option>
+            <option value="EUR">EUR — Euro</option><option value="GBP">GBP — Pound Sterling</option>
+            <option value="JPY">JPY — Yen Jepang</option><option value="SGD">SGD — Dolar Singapura</option>
+            <option value="MYR">MYR — Ringgit Malaysia</option><option value="AUD">AUD — Dolar Australia</option>
+            <option value="CNY">CNY — Yuan China</option><option value="SAR">SAR — Riyal Saudi</option>
+            <option value="KRW">KRW — Won Korea</option><option value="THB">THB — Baht Thailand</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-mu"><span class="btn-text">Cek Kurs Sekarang</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="mu-result">
+        <span class="result-label">Hasil</span>
+        <span class="result-value" id="mu-value">—</span>
+        <span class="result-expr" id="mu-expr"></span>
+        <span class="result-source" id="mu-date"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DISKON ═══ -->
+  <section class="page" id="page-diskon">
+    <div class="content-header"><h2>Kalkulator Diskon</h2><p>Hitung hemat belanjamu</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Harga Asli (Rp)</label><input id="disc-harga" type="number" placeholder="Contoh: 500000"/></div>
+        <div class="field"><label>Diskon (%)</label><input id="disc-persen" type="number" placeholder="Contoh: 30" min="0" max="100"/></div>
+      </div>
+      <button class="btn-primary" id="btn-diskon"><span class="btn-text">Hitung Diskon</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="diskon-result">
+        <span class="result-label">Harga Setelah Diskon</span>
+        <span class="result-value" id="disc-value">—</span>
+        <div class="chip-grid" id="disc-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BUNGA ═══ -->
+  <section class="page" id="page-bunga">
+    <div class="content-header"><h2>Bunga & Investasi</h2><p>Bunga Majemuk · Rumus Mifflin-St Jeor</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Modal Awal (Rp)</label><input id="bunga-pokok" type="number" placeholder="Contoh: 10000000"/></div>
+        <div class="field"><label>Bunga / Tahun (%)</label><input id="bunga-persen" type="number" placeholder="Contoh: 6" step="0.1"/></div>
+      </div>
+      <div class="input-row">
+        <div class="field"><label>Lama Investasi (Tahun)</label><input id="bunga-tahun" type="number" placeholder="Contoh: 5"/></div>
+        <div class="field"><label>Frekuensi Bunga</label>
+          <select id="bunga-frekuensi">
+            <option value="1">Tahunan</option><option value="4">Kuartalan</option>
+            <option value="12" selected>Bulanan</option><option value="365">Harian</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-bunga"><span class="btn-text">Hitung Investasi</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="bunga-result">
+        <span class="result-label">Total Nilai Akhir</span>
+        <span class="result-value" id="bunga-value">—</span>
+        <div class="chip-grid" id="bunga-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NABUNG ═══ -->
+  <section class="page" id="page-nabung">
+    <div class="content-header"><h2>Target Nabung</h2><p>Rencanakan tabunganmu</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Target (Rp)</label><input id="nabung-target" type="number" placeholder="Contoh: 5000000"/></div>
+        <div class="field"><label>Dalam (Bulan)</label><input id="nabung-bulan" type="number" placeholder="Contoh: 12" min="1"/></div>
+      </div>
+      <button class="btn-primary" id="btn-nabung"><span class="btn-text">Hitung Target</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="nabung-result">
+        <span class="result-label">Nabung Per Bulan</span>
+        <span class="result-value" id="nabung-value">—</span>
+        <div class="chip-grid" id="nabung-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BMI ═══ -->
+  <section class="page" id="page-bmi">
+    <div class="content-header"><h2>Kalkulator BMI</h2><p>Body Mass Index · Sumber: WHO Classification</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Berat Badan (kg)</label><input id="bmi-berat" type="number" placeholder="Contoh: 65"/></div>
+        <div class="field"><label>Tinggi Badan (cm)</label><input id="bmi-tinggi" type="number" placeholder="Contoh: 170"/></div>
+      </div>
+      <button class="btn-primary" id="btn-bmi"><span class="btn-text">Hitung BMI</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="bmi-result">
+        <span class="result-label">Nilai BMI</span>
+        <span class="result-value" id="bmi-value">—</span>
+        <div class="chip-grid" id="bmi-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KALORI ═══ -->
+  <section class="page" id="page-kalori">
+    <div class="content-header"><h2>Kebutuhan Kalori</h2><p>Rumus Mifflin-St Jeor (1990)</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Berat (kg)</label><input id="kal-berat" type="number" placeholder="65"/></div>
+        <div class="field"><label>Tinggi (cm)</label><input id="kal-tinggi" type="number" placeholder="170"/></div>
+        <div class="field"><label>Usia (tahun)</label><input id="kal-usia" type="number" placeholder="25"/></div>
+      </div>
+      <div class="input-row">
+        <div class="field"><label>Jenis Kelamin</label>
+          <select id="kal-gender">
+            <option value="pria">Pria</option><option value="wanita">Wanita</option>
+          </select>
+        </div>
+        <div class="field"><label>Level Aktivitas</label>
+          <select id="kal-aktivitas">
+            <option value="santai">Santai (kerja kantoran)</option>
+            <option value="ringan">Ringan (olahraga 1–3x/minggu)</option>
+            <option value="sedang" selected>Sedang (olahraga 3–5x/minggu)</option>
+            <option value="berat">Berat (olahraga 6–7x/minggu)</option>
+            <option value="sangat_berat">Sangat Berat (atlet)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn-kalori"><span class="btn-text">Hitung Kalori</span><span class="btn-loader hidden"></span></button>
+      <div class="result-box hidden" id="kalori-result">
+        <span class="result-label">Kalori Harian (TDEE)</span>
+        <span class="result-value" id="kalori-value">—</span>
+        <div class="chip-grid" id="kalori-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RIWAYAT ═══ -->
+  <section class="page" id="page-riwayat">
+    <div class="content-header">
+      <h2>Riwayat</h2><p>Semua perhitungan sesi ini</p>
+      <button class="btn-ghost" id="btn-clear-history">Hapus Semua</button>
+    </div>
+    <div id="riwayat-list" class="riwayat-list">
+      <div class="empty-state"><span class="empty-icon">📋</span><p>Belum ada riwayat.<br>Mulai hitung sesuatu!</p></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
