@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calcpro.id — Kalkulator Online & Konverter Satuan Indonesia</title>
+  <meta name="description" content="Calcpro.id adalah kalkulator online dan aplikasi konverter satuan Indonesia untuk kalkulator digital, konversi mata uang, panjang, suhu, berat, tekanan, BMI, dan pe[...]"/>
+  <meta name="keywords" content="calcpro.id, kalkulator online, konverter satuan, konversi mata uang, kalkulator BMI, kalkulator diskon, konversi suhu, konversi panjang, kalkulator investasi, kesehata[...]"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="Calcpro.id — Kalkulator Online & Konverter Satuan Indonesia"/>
+  <meta property="og:description" content="Calcpro.id adalah kalkulator online dan aplikasi konversi satuan Indonesia untuk kalkulator digital, konversi mata uang, panjang, suhu, berat, tekanan, BMI,[...]"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="id_ID"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+<div id="toast-container"></div>
+<div class="overlay" id="overlay"></div>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">Calcpro.id</span>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+
+    <div class="nav-group">
+      <span class="nav-label">Umum</span>
+      <a class="nav-item active" data-page="dashboard" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" wi[...]</svg>
+        <span>Dashboard</span>
+      </a>
+      <a class="nav-item" data-page="kalkulator" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2[...]</svg>
+        <span>Kalkulator</span>
+      </a>
+      <a class="nav-item" data-page="riwayat" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Riwayat</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">Konversi</span>
+      <a class="nav-item" data-page="panjang" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6l6 6-6 6M21 6l-6 6 6 6"/></svg>
+        <span>Panjang</span>
+      </a>
+      <a class="nav-item" data-page="suhu" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+        <span>Suhu</span>
+      </a>
+      <a class="nav-item" data-page="berat" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><path d="M6.5 8a7 7 0 1 0 11 0"/></svg>
+        <span>Berat</span>
+      </a>
+      <a class="nav-item" data-page="tekanan" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Tekanan</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">Keuangan</span>
+      <a class="nav-item" data-page="matauang" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>Mata Uang Realtime</span>
+      </a>
+      <a class="nav-item" data-page="diskon" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.[...]"/></svg>
+        <span>Diskon</span>
+      </a>
+      <a class="nav-item" data-page="bunga" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Bunga & Investasi</span>
+      </a>
+      <a class="nav-item" data-page="nabung" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 6v4l3 3"/></svg>
+        <span>Target Nabung</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">Kesehatan</span>
+      <a class="nav-item" data-page="bmi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>BMI</span>
+      </a>
+      <a class="nav-item" data-page="kalori" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="1"/></svg>
+        <span>Kebutuhan Kalori</span>
+      </a>
+    </div>
+
+  </nav>
+  <div class="sidebar-footer">v2.0.0 · CalcPro</div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main" id="mainContent">
+  <header class="topbar">
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span><span></span><span></span>
+    </button>
+    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+    <div class="topbar-right">
+      <span class="badge" id="statusBadge">Online</span>
+    </div>
+  </header>
+
+  <!-- ═══ DASHBOARD ═══ -->
+  <section class="page active" id="page-dashboard">
+    <div class="dashboard-hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Selamat Datang di Calcpro.id</p>
+        <h2 class="hero-heading">Hitung Lebih Cepat,<br><em>Konversi Lebih Pintar</em></h2>
+        <p class="hero-sub">Calcpro.id menyediakan kalkulator, konversi, keuangan & kesehatan dalam satu platform.</p>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="orbit-ring ring-3"></div>
+        <span class="orbit-center">∑</span>
+      </div>
+    </div>
+    <div class="dash-categories">
+      <div class="dash-cat" data-page="kalkulator"><span class="dc-icon">🧮</span><span>Kalkulator</span></div>
+      <div class="dash-cat" data-page="panjang"><span class="dc-icon">📏</span><span>Panjang</span></div>
+      <div class="dash-cat" data-page="suhu"><span class="dc-icon">🌡</span><span>Suhu</span></div>
+      <div class="dash-cat" data-page="berat"><span class="dc-icon">⚖</span><span>Berat</span></div>
+      <div class="dash-cat" data-page="tekanan"><span class="dc-icon">💨</span><span>Tekanan</span></div>
+      <div class="dash-cat" data-page="matauang"><span class="dc-icon">💱</span><span>Mata Uang</span></div>
+      <div class="dash-cat" data-page="diskon"><span class="dc-icon">🏷</span><span>Diskon</span></div>
+      <div class="dash-cat" data-page="bunga"><span class="dc-icon">📈</span><span>Bunga</span></div>
+      <div class="dash-cat" data-page="nabung"><span class="dc-icon">🎯</span><span>Nabung</span></div>
+      <div class="dash-cat" data-page="bmi"><span class="dc-icon">🏃</span><span>BMI</span></div>
+      <div class="dash-cat" data-page="kalori"><span class="dc-icon">🔥</span><span>Kalori</span></div>
+      <div class="dash-cat" data-page="riwayat"><span class="dc-icon">📋</span><span>Riwayat</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ KALKULATOR ═══ -->
+  <section class="page" id="page-kalkulator">
+    <div class="content-header"><h2>Kalkulator</h2><p>Operasi aritmatika dasar</p></div>
+    <div class="card glass">
+      <div class="input-row">
+        <div class="field"><label>Angka Pertama</label><input id="calc-a" type="number" placeholder="0"/></div>
+        <div class="field"><label>Angka Kedua</label><input id="calc-b" type="number" placeholder="0"/></div>
+      </div>
+      <div class="op-grid">
+        <button class="op-btn" data-op="tambah"><span class="op-sym">＋</span><span>Tambah</span></button>
+        <button class="op-btn" data-op="kurang"><span class="op-sym">－</span><span>Kurang</span></button>
+        <button class="op-btn" data-op="kali"><span class="op-sym">×</span><span>Kali</span></button>
+        <button class="op-btn" data-op="bagi"><span class="op-sym">÷</span><span>Bagi</span></button>
+      </div>
+      <div class="result-box hidden" id="calc-result">
+        <span class="result-label">Hasil</span>
+        <span class="result-value" id="calc-value">—</span>
+        <span class="result-expr" id="calc-expr"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other sections omitted for brevity in template creation -->
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
